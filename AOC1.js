@@ -999,19 +999,61 @@ mxhnceightfiveftmcdpgv63two6four
 nine6five181
 sevenbsixsbzmone55`;
 
+const str2 = `two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen`;
+
 function AOC1(list) {
+  // je transforme la liste en tableau
   const array = list.split("\n");
-  const numbers = array.map((item) => {
-    const numberArr = item.match(/\d/g);
-    if (numberArr) {
-      const firstNum = numberArr[0];
-      const lastNum = numberArr[numberArr.length - 1];
-      const finalRes = firstNum + lastNum;
-      return Number(finalRes);
-    }
+  //je passe sur chacun des items du tableau avec un map
+  const items = array.map((item) => {
+    //je traduis chacun des items en remplaçant les chiffres écrit par des chiffres num
+    itemTranslate = translate(item);
+    //je récupère tous les chiffres dans la string
+    const numberArr = itemTranslate.match(/\d/g);
+    console.log(itemTranslate);
+    const firstNum = numberArr[0];
+    const lastNum = numberArr[numberArr.length - 1];
+    const finalRes = firstNum + lastNum;
+    return Number(finalRes);
   });
+
   const reducer = (accumulator, curr) => accumulator + curr;
-  console.log(numbers.reduce(reducer));
+  console.log(items.reduce(reducer));
 }
 
 AOC1(str);
+
+function translate(test) {
+  const newChaine = test.replace(
+    /one|two|three|four|five|six|seven|eight|nine/g,
+    function (match) {
+      switch (match) {
+        case "one":
+          return "1";
+        case "two":
+          return "2";
+        case "three":
+          return "3";
+        case "four":
+          return "4";
+        case "five":
+          return "5";
+        case "six":
+          return "6";
+        case "seven":
+          return "7";
+        case "eight":
+          return "8";
+        case "nine":
+          return "9";
+      }
+    }
+  );
+  return newChaine;
+}
