@@ -1016,7 +1016,6 @@ function AOC1(list) {
     itemTranslate = translate(item);
     //je récupère tous les chiffres dans la string
     const numberArr = itemTranslate.match(/\d/g);
-    console.log(itemTranslate);
     const firstNum = numberArr[0];
     const lastNum = numberArr[numberArr.length - 1];
     const finalRes = firstNum + lastNum;
@@ -1027,12 +1026,13 @@ function AOC1(list) {
   console.log(items.reduce(reducer));
 }
 
-AOC1(str);
+// AOC1(str);
 
-function translate(test) {
+function translatebis(test) {
   const newChaine = test.replace(
-    /one|two|three|four|five|six|seven|eight|nine/g,
+    /(one|two|three|four|five|six|seven|eight|nine)/g,
     function (match) {
+      console.log(match);
       switch (match) {
         case "one":
           return "1";
@@ -1057,3 +1057,21 @@ function translate(test) {
   );
   return newChaine;
 }
+
+console.log(translatebis("sevensrncljm5zmvvrtthreejjd85twonepvj"));
+
+// function translate(test) {
+//   const newChaine = test.replace(/[a-zA-Z]*\d*[a-zA-Z]*/g, function (match) {
+//     return match
+//       .replace(/one/g, "1")
+//       .replace(/two/g, "2")
+//       .replace(/three/g, "3")
+//       .replace(/four/g, "4")
+//       .replace(/five/g, "5")
+//       .replace(/six/g, "6")
+//       .replace(/seven/g, "7")
+//       .replace(/eight/g, "8")
+//       .replace(/nine/g, "9");
+//   });
+//   return newChaine;
+// }
