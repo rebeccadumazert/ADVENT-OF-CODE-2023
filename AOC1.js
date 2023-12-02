@@ -1026,52 +1026,33 @@ function AOC1(list) {
   console.log(items.reduce(reducer));
 }
 
-// AOC1(str);
+AOC1(str);
 
-function translatebis(test) {
-  const newChaine = test.replace(
-    /(one|two|three|four|five|six|seven|eight|nine)/g,
-    function (match) {
-      console.log(match);
-      switch (match) {
-        case "one":
-          return "1";
-        case "two":
-          return "2";
-        case "three":
-          return "3";
-        case "four":
-          return "4";
-        case "five":
-          return "5";
-        case "six":
-          return "6";
-        case "seven":
-          return "7";
-        case "eight":
-          return "8";
-        case "nine":
-          return "9";
-      }
-    }
-  );
+// POUR LA PARTIE DEUX ! C'est sale attention 😅
+
+function translate(test) {
+  const newChaine = test.replace(/[a-zA-Z]*\d*[a-zA-Z]*/g, function (match) {
+    return match
+      .replace(/twone/g, "21")
+      .replace(/eighthree/g, "83")
+      .replace(/eightwo/g, "82")
+      .replace(/oneight/g, "18")
+      .replace(/threeight/g, "38")
+      .replace(/fiveight/g, "58")
+      .replace(/nineight/g, "98")
+      .replace(/sevenine/g, "79")
+      .replace(/one/g, "1")
+      .replace(/two/g, "2")
+      .replace(/three/g, "3")
+      .replace(/four/g, "4")
+      .replace(/five/g, "5")
+      .replace(/six/g, "6")
+      .replace(/seven/g, "7")
+      .replace(/eight/g, "8")
+      .replace(/nine/g, "9");
+  });
   return newChaine;
 }
 
-console.log(translatebis("sevensrncljm5zmvvrtthreejjd85twonepvj"));
-
-// function translate(test) {
-//   const newChaine = test.replace(/[a-zA-Z]*\d*[a-zA-Z]*/g, function (match) {
-//     return match
-//       .replace(/one/g, "1")
-//       .replace(/two/g, "2")
-//       .replace(/three/g, "3")
-//       .replace(/four/g, "4")
-//       .replace(/five/g, "5")
-//       .replace(/six/g, "6")
-//       .replace(/seven/g, "7")
-//       .replace(/eight/g, "8")
-//       .replace(/nine/g, "9");
-//   });
-//   return newChaine;
-// }
+// Réponse partie 1 : 54667
+// Réponse partie 2 : 54203
